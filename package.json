@@ -15,10 +15,10 @@
     "@types/uuid": "^8.3.0",
     "jest": "^27.0.6",
     "ts-jest": "^27.0.3",
-    "ts-node-dev": "^1.1.7",
-    "typescript": "^4.3.4"
+    "ts-node-dev": "^1.1.7"
   },
   "dependencies": {
+    "typescript": "^4.3.4",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "start": "npm run build && node dist/src/index.js",
+    "start": "npm run build && node ./dist/src/index.js",
     "dev": "ts-node-dev --respawn --clear --transpile-only src/index.ts",
     "test": "jest"
   }
