@@ -22,3 +22,5 @@ O local onde o banco está rodando aponta para o ip. seja um cluster hospedados 
 
 - Ou rode o comando `npm start` ou `yarn start` no terminal dentro da pasta local do app.
   Após feito o arquivo .env ou editado o existente, teste o app.
+
+- Faça uma requisição à `url-do-app/api-docs` para ter acesso à documentação da API.
