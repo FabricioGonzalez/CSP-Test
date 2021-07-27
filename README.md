@@ -5,7 +5,7 @@
 
 - O App está configurado para receber um arquivo .env na raiz. O arquivo já existe, e foi pré-configurado. caso queira pode editá-lo.
 
-  e o arquivo recebe as sequintes opções. Caso seja utilizado em localhost.
+- O arquivo recebe as sequintes opções. Caso seja utilizado em localhost.
 
 | Nome                                           |        Valor        |
 | ---------------------------------------------- | :-----------------: |
