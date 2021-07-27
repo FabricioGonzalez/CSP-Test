@@ -1,9 +1,10 @@
+require('dotenv').config();
 const config = {
-  database: 'test',
-  username: 'docker',
-  password: 'docker',
-  /*     host: 'mysqldb', */
-  port: 3306,
+  database: process.env.MYSQL_DATABASE,
+  username: process.env.MYSQL_USER,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+  host: process.env.DATABASE_HOST || 'localhost',
+  port: process.env.MYSQL_LOCAL_PORT || 3306,
   dialect: 'mysql',
   define: {
     timestamps: true,

@@ -1,11 +1,10 @@
 import express from 'express';
 import router from '../../Controllers/Router';
 import cors from 'cors';
+require('dotenv').config();
 
 class Server {
-  constructor() {
-    
-  }
+  constructor() {}
 
   private app = express();
 
@@ -19,7 +18,8 @@ class Server {
   startServer(): void {
     const server = new Server();
     server.configServer();
-    server.app.listen(3001, () => console.log('Running at 3001'));
+    const port = process.env.NODE_LOCAL_PORT || 3000;
+    server.app.listen(port, () => console.log(`Running at ${port}`));
   }
 }
 
