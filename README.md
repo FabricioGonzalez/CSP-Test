@@ -3,8 +3,9 @@
 - Primeiramente, clone o repositorio do github do projeto.
   No terminal digite `git clone https://github.com/FabricioGonzalez/CSP-Test.git`, ou faça o download do código pelo github. Descompacte o arquivo. Abra um powershell ou CMD ou qualquer terminal de linha de comando disponível em sua máquina e navegue até a pasta onde o código foi descompactado. Então, prossiga para o próximo passo descrito abaixo
 
-- O App está configurado para receber um arquivo .env na raiz.
-  e o arquivo recebe as sequintes opções.
+- O App está configurado para receber um arquivo .env na raiz. O arquivo já existe, e foi pré-configurado. caso queira pode editá-lo.
+
+  e o arquivo recebe as sequintes opções. Caso seja utilizado em localhost.
 
 | Nome                                           |        Valor        |
 | ---------------------------------------------- | :-----------------: |
