@@ -1,0 +1,654 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Contact API",
+    "description": "A API to save contacts and their number",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "Development and Test Server, not ready to production."
+    }
+  ],
+  "paths": {
+    "/contact": {
+      "get": {
+        "description": "Returns all contacts and their phone numbers",
+        "responses": {
+          "200": {
+            "description": "A list of contacts with its phones",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": [
+                    {
+                      "Contact": {
+                        "id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                        "first_name": "fabricio",
+                        "last_name": "gonzalez",
+                        "email": "fabriciogonzalezfr@gmail.com",
+                        "deleted": 0,
+                        "createdAt": "2021-07-24T21:35:00.000Z",
+                        "updatedAt": "2021-07-24T21:35:00.000Z"
+                      },
+                      "Phones": [
+                        {
+                          "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                          "telefone": "13996518702",
+                          "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                          "deleted": 0,
+                          "createdAt": "2021-07-24T21:35:00.000Z",
+                          "updatedAt": "2021-07-24T21:35:00.000Z",
+                          "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                        },
+                        {
+                          "id": "97d43e70-e03a-4f52-aef3-46b6770fff1a",
+                          "telefone": "13996547898",
+                          "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                          "deleted": 0,
+                          "createdAt": "2021-07-24T21:35:00.000Z",
+                          "updatedAt": "2021-07-24T21:35:00.000Z",
+                          "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                        }
+                      ]
+                    },
+                    {
+                      "Contact": {
+                        "id": "9ed50f60-f31e-4539-841f-285ac8d889c8",
+                        "first_name": "Fabricio",
+                        "last_name": "no",
+                        "email": "fabriciogonzalezfr@gmail.com",
+                        "deleted": 0,
+                        "createdAt": "2021-07-24T20:03:49.000Z",
+                        "updatedAt": "2021-07-24T20:03:49.000Z"
+                      },
+                      "Phones": [
+                        {
+                          "id": "b1aeb0ab-a8ba-4ac7-888c-69ec60424a5d",
+                          "telefone": "13996518702",
+                          "contact_id": "9ed50f60-f31e-4539-841f-285ac8d889c8",
+                          "deleted": 0,
+                          "createdAt": "2021-07-24T20:03:49.000Z",
+                          "updatedAt": "2021-07-24T20:03:49.000Z",
+                          "ContactId": "9ed50f60-f31e-4539-841f-285ac8d889c8"
+                        },
+                        {
+                          "id": "fdb08ad2-3829-4880-943f-a4113a308451",
+                          "telefone": "13996547898",
+                          "contact_id": "9ed50f60-f31e-4539-841f-285ac8d889c8",
+                          "deleted": 0,
+                          "createdAt": "2021-07-24T20:03:49.000Z",
+                          "updatedAt": "2021-07-24T20:03:49.000Z",
+                          "ContactId": "9ed50f60-f31e-4539-841f-285ac8d889c8"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Save a contact and its phones.",
+
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "firstName": "seu nome",
+                "lastName": "meu nome",
+                "email": "seunomemeunome@gmail.com",
+                "phones": ["(13)97988-7234"]
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "description": "first name of the person",
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "description": "last  name of the person",
+                    "type": "string"
+                  },
+
+                  "email": {
+                    "description": "email of the person",
+                    "type": "string"
+                  },
+
+                  "phones": {
+                    "description": "Person Phones",
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["firstName", "lastName", "email", "phones"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Save a contact and its phones.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": {
+                    "Contact": {
+                      "id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                      "first_name": "fabricio",
+                      "last_name": "gonzalez",
+                      "email": "fabriciogonzalezfr@gmail.com",
+                      "deleted": 0,
+                      "createdAt": "2021-07-24T21:35:00.000Z",
+                      "updatedAt": "2021-07-24T21:35:00.000Z"
+                    },
+                    "Phones": [
+                      {
+                        "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                        "telefone": "13996518702",
+                        "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                        "deleted": 0,
+                        "createdAt": "2021-07-24T21:35:00.000Z",
+                        "updatedAt": "2021-07-24T21:35:00.000Z",
+                        "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                "firstName": "seu nome",
+                "lastName": "meu nome",
+                "newFirstName": "seu nome",
+                "newLastName": "meu nome",
+                "newEmail": "seunomemeunome@gmail.com"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "id of the person",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "first name of the person",
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "description": "last name of the person",
+                    "type": "string"
+                  },
+                  "newfirstName": {
+                    "description": "updated first name of the person",
+                    "type": "string"
+                  },
+                  "newLastName": {
+                    "description": "updated last  name of the person",
+                    "type": "string"
+                  },
+
+                  "newEmail": {
+                    "description": "updated email of the person",
+                    "type": "string"
+                  }
+                },
+                "required": ["newfirstName", "newlastName", "newEmail"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updates a contact.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": {
+                    "Contact": {
+                      "id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                      "first_name": "fabricio",
+                      "last_name": "gonzalez",
+                      "email": "fabriciogonzalezfr@gmail.com",
+                      "deleted": 0,
+                      "createdAt": "2021-07-24T21:35:00.000Z",
+                      "updatedAt": "2021-07-24T21:35:00.000Z"
+                    },
+                    "Phones": [
+                      {
+                        "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                        "telefone": "13996518702",
+                        "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                        "deleted": 0,
+                        "createdAt": "2021-07-24T21:35:00.000Z",
+                        "updatedAt": "2021-07-24T21:35:00.000Z",
+                        "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact/phone/add": {
+      "post": {
+        "description": "Save a new phone number to a contact.",
+
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                "firstName": "seu nome",
+                "lastName": "meu nome",
+                "phones": ["(13)97988-7234"]
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "id of the person",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "first name of the person",
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "description": "last  name of the person",
+                    "type": "string"
+                  },
+
+                  "phones": {
+                    "description": "Person new Phone numbers",
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["firstName", "lastName", "phones"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Save a new phone number to a contact",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": {
+                    "Contact": {
+                      "id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                      "first_name": "fabricio",
+                      "last_name": "gonzalez",
+                      "email": "fabriciogonzalezfr@gmail.com",
+                      "deleted": 0,
+                      "createdAt": "2021-07-24T21:35:00.000Z",
+                      "updatedAt": "2021-07-24T21:35:00.000Z"
+                    },
+                    "Phones": [
+                      {
+                        "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                        "telefone": "13996518702",
+                        "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                        "deleted": 0,
+                        "createdAt": "2021-07-24T21:35:00.000Z",
+                        "updatedAt": "2021-07-24T21:35:00.000Z",
+                        "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact/{param}": {
+      "get": {
+        "description": "Returns one contact that matches with a name or id passed in param.",
+
+        "parameters": [
+          {
+            "name": "param",
+            "in": "path",
+            "description": "ID of the contact or the name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "A contact and its phone numbers",
+            "content": {
+              "application/json": {
+                "example": {
+                  "contact": {
+                    "id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                    "first_name": "fabricio",
+                    "last_name": "gonzalez",
+                    "email": "fabriciogonzalezfr@gmail.com",
+                    "deleted": 0,
+                    "createdAt": "2021-07-24T21:35:00.000Z",
+                    "updatedAt": "2021-07-24T21:35:00.000Z"
+                  },
+                  "phones": [
+                    {
+                      "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                      "telefone": "13996518702",
+                      "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                      "deleted": 0,
+                      "createdAt": "2021-07-24T21:35:00.000Z",
+                      "updatedAt": "2021-07-24T21:35:00.000Z",
+                      "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                    },
+                    {
+                      "id": "97d43e70-e03a-4f52-aef3-46b6770fff1a",
+                      "telefone": "13996547898",
+                      "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                      "deleted": 0,
+                      "createdAt": "2021-07-24T21:35:00.000Z",
+                      "updatedAt": "2021-07-24T21:35:00.000Z",
+                      "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "param",
+            "in": "path",
+            "description": "ID of the contact or the name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletes a contact and its phoneNumbers.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": {
+                    "contact": {
+                      "id": "bafe5925-97b3-4076-ba86-55e088484d0e",
+                      "first_name": "coosissas",
+                      "last_name": "coissas",
+                      "email": "coisa@gmail.com",
+                      "deleted": 0,
+                      "createdAt": "2021-07-26T16:30:55.000Z",
+                      "updatedAt": "2021-07-27T00:48:23.000Z"
+                    },
+                    "phones": []
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact/phone": {
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                "firstName": "seu nome",
+                "lastName": "meu nome",
+                "phone": "(13)98535-4478",
+                "phone_id": "5360f821-cbbd-4bd4-8ce5-2d75268cc1ab"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "id of the person",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "first name of the person",
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "description": "last name of the person",
+                    "type": "string"
+                  },
+                  "phone": {
+                    "description": "new phone number name of the person",
+                    "type": "string"
+                  },
+                  "phone_id": {
+                    "description": "id of the number",
+                    "type": "string"
+                  }
+                },
+                "required": ["phone", "phone_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updates a contact phone number.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": {
+                    "Contact": {
+                      "id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                      "first_name": "fabricio",
+                      "last_name": "gonzalez",
+                      "email": "fabriciogonzalezfr@gmail.com",
+                      "deleted": 0,
+                      "createdAt": "2021-07-24T21:35:00.000Z",
+                      "updatedAt": "2021-07-24T21:35:00.000Z"
+                    },
+                    "Phones": [
+                      {
+                        "id": "7595e21f-d52c-4d1e-a693-5c3e6ceafb13",
+                        "telefone": "(13)98535-4478",
+                        "contact_id": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6",
+                        "deleted": 0,
+                        "createdAt": "2021-07-24T21:35:00.000Z",
+                        "updatedAt": "2021-07-24T21:35:00.000Z",
+                        "ContactId": "7f2c5a5b-ae64-4bfe-baf5-31534e4d7fa6"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact/{param}/phone/{phone_id}": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "param",
+            "in": "path",
+            "description": "ID of the contact or the name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          },
+          {
+            "name": "phone_id",
+            "in": "path",
+            "description": "ID of contact phone number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Deletes a contact and its phoneNumbers.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "responseData": {
+                    "contact": {
+                      "id": "bafe5925-97b3-4076-ba86-55e088484d0e",
+                      "first_name": "coosissas",
+                      "last_name": "coissas",
+                      "email": "coisa@gmail.com",
+                      "deleted": 0,
+                      "createdAt": "2021-07-26T16:30:55.000Z",
+                      "updatedAt": "2021-07-27T00:48:23.000Z"
+                    },
+                    "phones": []
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error, bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "some Error"
+                },
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

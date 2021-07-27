@@ -1,0 +1,26 @@
+{
+  "Swagger": {
+    "prefix": "doc",
+    "body": [
+      "{",
+      "\t\"openapi\":\"3.0.0\",",
+      "\"info\":{",
+      "\"title\": \"$1\",",
+      "\"description\": \"$2\",",
+      "\"version\":\"$3\"",
+      "},\n$4",
+      "}"
+    ],
+    "description": "Creates a description"
+  },
+  "servers": {
+    "prefix": "server",
+    "body": [
+      "\"servers\": [{",
+      "\t\"url\": \"$1\",",
+      "\t\"description\": \"$2\"",
+      "}], \n $3"
+    ]
+  },
+	
+}
